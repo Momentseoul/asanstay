@@ -77,6 +77,29 @@
     .actions{flex-direction:column;gap:6px;padding-top:10px}
     .btn{width:100%;min-height:40px;font-size:13.5px;padding:0 10px}
   }
+  /* 컴퓨터(넓은 화면): 글씨·버튼·여백을 크게 */
+  @media (min-width:1000px){
+    :root{--gutter:56px}
+    .top,.intro,.stays,.foot{max-width:1280px}
+    .top{padding-top:24px;padding-bottom:24px}
+    .mark{font-size:26px}
+    .lang select{font-size:15px;padding:9px 34px 9px 16px}
+    .intro{padding-top:40px;padding-bottom:40px}
+    .intro h1{font-size:clamp(64px,6vw,92px)}
+    .intro p{font-size:20px;margin-top:22px}
+    .stays{gap:40px}
+    .stay figure{aspect-ratio:3/2;border-radius:6px}
+    .stay .body{padding-top:22px}
+    .stay h2{font-size:32px;gap:12px}
+    .stay h2::before{width:11px;height:11px}
+    .stay .area{font-size:17px;margin-top:6px}
+    .stay .tag{font-size:21px;margin-top:14px}
+    .stay ul{font-size:17.5px;line-height:1.7;margin-top:16px;padding-top:16px}
+    .actions{padding-top:24px;gap:12px}
+    .btn{min-height:54px;padding:0 28px;font-size:17px}
+    .foot{font-size:16px}
+    .foot .slogan{font-size:22px}
+  }
   @media (prefers-reduced-motion:reduce){
     .stay img{transition:none}
     .stay figure a:hover img{transform:none}
