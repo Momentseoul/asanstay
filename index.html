@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Asan Stay</title>
+<meta name="description" content="잠실과 대치동, 두 곳의 숙소. 머무는 곳의 안내를 열어 보세요.">
+<meta property="og:title" content="Asan Stay">
+<meta property="og:description" content="Moment Seoul · Daechi Stay guest guides">
+<meta property="og:image" content="https://asanstay.com/img/moment.jpg">
+<meta name="theme-color" content="#F7F7F5">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+  :root{
+    --ink:#222826; --sub:#6E7471; --line:#E2E3DF; --bg:#F7F7F5;
+    --gutter:clamp(16px, 4vw, 48px);
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Hiragino Sans","PingFang SC","PingFang TC","Microsoft YaHei","Malgun Gothic",sans-serif;
+    font-size:16px;line-height:1.6;letter-spacing:-.005em;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  a:focus-visible,select:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
+
+  .top{display:flex;align-items:center;justify-content:space-between;padding:22px var(--gutter);max-width:1440px;margin:0 auto}
+  .mark{font-size:20px;font-weight:300;letter-spacing:.02em;text-decoration:none}
+  .lang{position:relative}
+  .lang select{appearance:none;-webkit-appearance:none;background:transparent;border:1px solid var(--line);border-radius:999px;
+    padding:7px 30px 7px 14px;font:inherit;font-size:14px;color:var(--ink);cursor:pointer}
+  .lang::after{content:"";position:absolute;right:13px;top:50%;width:6px;height:6px;border-right:1.2px solid var(--sub);
+    border-bottom:1.2px solid var(--sub);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+
+  .intro{padding:clamp(28px,7vw,88px) var(--gutter) clamp(28px,5vw,56px);max-width:1440px;margin:0 auto}
+  .intro h1{margin:0;font-weight:250;font-size:clamp(44px,9.5vw,132px);line-height:.98;letter-spacing:-.035em}
+  .intro h1 span{display:block}
+  .intro h1 span + span{color:var(--sub)}
+  .intro p{margin:clamp(20px,3vw,32px) 0 0;font-size:clamp(16px,1.6vw,19px);color:var(--sub);max-width:34em}
+
+  .stays{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(10px,1.4vw,20px);padding:0 var(--gutter);max-width:1440px;margin:0 auto}
+  .stay{display:flex;flex-direction:column;min-width:0}
+  .stay figure{margin:0;position:relative;overflow:hidden;border-radius:3px;background:var(--line);aspect-ratio:3/4}
+  .stay figure a{display:block;height:100%}
+  .stay img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+  .stay figure a:hover img{transform:scale(1.025)}
+  .stay .body{padding:20px 2px 0;display:flex;flex-direction:column;flex:1}
+  .stay h2{margin:0;font-size:clamp(22px,2.2vw,30px);font-weight:500;letter-spacing:-.02em;line-height:1.2;display:flex;align-items:center;gap:10px}
+  .stay h2::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c);flex:0 0 auto}
+  .stay .area{margin:6px 0 0;font-size:14px;color:var(--sub)}
+  .stay .tag{margin:14px 0 0;font-size:17px;line-height:1.5}
+  .stay ul{list-style:none;margin:14px 0 0;padding:14px 0 0;border-top:1px solid var(--line);font-size:14.5px;color:var(--sub)}
+  .stay li + li{margin-top:2px}
+  .actions{margin-top:auto;padding-top:22px;display:flex;flex-wrap:wrap;gap:8px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:999px;
+    font-size:15px;font-weight:500;text-decoration:none;white-space:nowrap}
+  .btn.main{background:var(--c);color:#fff}
+  .btn.main:hover{filter:brightness(1.08)}
+  .btn.line{border:1px solid var(--line);background:#fff}
+  .btn.line:hover{border-color:var(--sub)}
+
+  .foot{max-width:1440px;margin:clamp(64px,9vw,120px) auto 0;padding:28px var(--gutter) calc(36px + env(safe-area-inset-bottom));
+    border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:20px 48px;justify-content:space-between;font-size:14px;color:var(--sub)}
+  .foot .slogan{color:var(--ink);font-weight:300;font-size:18px;letter-spacing:-.01em}
+  .foot dl{margin:0;display:grid;grid-template-columns:auto auto;gap:4px 18px}
+  .foot dd{margin:0;color:var(--ink)}
+
+  @media (max-width:900px){
+    .stays{grid-template-columns:1fr;gap:56px}
+    .stay figure{aspect-ratio:4/3}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .stay img{transition:none}
+    .stay figure a:hover img{transform:none}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="mark" href="/">asan stay</a>
+  <label class="lang">
+    <select id="lang" aria-label="Language">
+      <option value="ko">한국어</option>
+      <option value="en">English</option>
+      <option value="ja">日本語</option>
+      <option value="zh">简体中文</option>
+    </select>
+  </label>
+</header>
+
+<main>
+  <section class="intro">
+    <h1><span>Stay easy.</span><span>Feel at home.</span></h1>
+    <p data-t="intro">잠실과 대치동, 두 곳의 숙소. 머무는 곳의 안내를 열어 보세요.</p>
+  </section>
+
+  <section class="stays">
+    <article class="stay" style="--c:#C8402A">
+      <figure><a href="https://momentseoul.vercel.app/"><img src="img/moment.jpg" alt="Moment Seoul"></a></figure>
+      <div class="body">
+        <h2>Moment Seoul</h2>
+        <p class="area" data-t="m_area">서울 송파구, 잠실</p>
+        <p class="tag" data-t="m_tag">서울에 왔는데, 서울을 잊었다.</p>
+        <ul>
+          <li data-t="m_f1">최대 8명, 퀸베드 4개</li>
+          <li data-t="m_f2">무료 주차 1대</li>
+          <li data-t="m_f3">세탁기·건조기 자유 이용</li>
+        </ul>
+        <div class="actions">
+          <a class="btn main" href="https://momentseoul.vercel.app/" data-t="guide">숙소 안내 보기</a>
+          <a class="btn line" href="https://www.airbnb.co.kr/rooms/1483206443380978308" target="_blank" rel="noopener" data-t="airbnb">에어비앤비에서 보기</a>
+        </div>
+      </div>
+    </article>
+
+    <article class="stay" style="--c:#2F5D55">
+      <figure><a href="https://daechistay.vercel.app/"><img src="img/daechi.jpg" alt="Daechi Stay" loading="lazy"></a></figure>
+      <div class="body">
+        <h2>Daechi Stay</h2>
+        <p class="area" data-t="d_area">서울 강남구, 대치동</p>
+        <p class="tag" data-t="d_tag">강남의 모든 일정이 가까워지는 곳.</p>
+        <ul>
+          <li data-t="d_f1">한티역 도보 10분</li>
+          <li data-t="d_f2">최대 6명, 퀸베드 3개</li>
+          <li data-t="d_f3">장기 투숙 혜택</li>
+        </ul>
+        <div class="actions">
+          <a class="btn main" href="https://daechistay.vercel.app/" data-t="guide">숙소 안내 보기</a>
+        </div>
+      </div>
+    </article>
+  </section>
+</main>
+
+<footer class="foot">
+  <div>
+    <div class="slogan">Asan Stay</div>
+    <div data-t="contact">문의는 예약하신 사이트의 메시지로 보내 주세요.</div>
+  </div>
+  <dl>
+    <dt>Host</dt><dd>JAY</dd>
+  </dl>
+</footer>
+
+<script>
+const T={
+ ko:{intro:"잠실과 대치동, 두 곳의 숙소. 머무는 곳의 안내를 열어 보세요.",
+  m_area:"서울 송파구, 잠실",m_tag:"서울에 왔는데, 서울을 잊었다.",m_f1:"최대 8명, 퀸베드 4개",m_f2:"무료 주차 1대",m_f3:"세탁기·건조기 자유 이용",
+  d_area:"서울 강남구, 대치동",d_tag:"강남의 모든 일정이 가까워지는 곳.",d_f1:"한티역 도보 10분",d_f2:"최대 6명, 퀸베드 3개",d_f3:"장기 투숙 혜택",
+  guide:"숙소 안내 보기",airbnb:"에어비앤비에서 보기",contact:"문의는 예약하신 사이트의 메시지로 보내 주세요."},
+ en:{intro:"Two homes in Jamsil and Daechi. Open the guide for the place you're staying.",
+  m_area:"Jamsil, Songpa-gu, Seoul",m_tag:"Every Moment, Seoul.",m_f1:"Up to 8 guests, 4 queen beds",m_f2:"1 free parking space",m_f3:"Washer & dryer, free to use",
+  d_area:"Daechi-dong, Gangnam-gu, Seoul",d_tag:"Everything in Gangnam, close at hand.",d_f1:"10 min walk to Hanti Station",d_f2:"Up to 6 guests, 3 queen beds",d_f3:"Long-stay benefits",
+  guide:"Open guest guide",airbnb:"View on Airbnb",contact:"For questions, message us on the site you booked with."},
+ ja:{intro:"蚕室と大峙洞、2つのお宿。ご滞在先のご案内を開いてください。",
+  m_area:"ソウル松坡区・蚕室",m_tag:"ソウルに来て、ソウルを忘れる。",m_f1:"最大8名、クイーンベッド4台",m_f2:"無料駐車場1台",m_f3:"洗濯機・乾燥機ご自由にどうぞ",
+  d_area:"ソウル江南区・大峙洞",d_tag:"江南のすべての予定が近くなる場所。",d_f1:"ハンティ駅から徒歩10分",d_f2:"最大6名、クイーンベッド3台",d_f3:"長期滞在特典",
+  guide:"宿のご案内を見る",airbnb:"Airbnbで見る",contact:"ご質問はご予約サイトのメッセージからお送りください。"},
+ zh:{intro:"蚕室与大峙洞的两处住所。请打开您入住房源的指南。",
+  m_area:"首尔松坡区 · 蚕室",m_tag:"来到首尔，却忘了身在首尔。",m_f1:"最多8人，4张大床",m_f2:"免费停车位1个",m_f3:"洗衣机、烘干机可自由使用",
+  d_area:"首尔江南区 · 大峙洞",d_tag:"江南的每个行程，近在咫尺。",d_f1:"步行10分钟至韩亭站",d_f2:"最多6人，3张大床",d_f3:"长住优惠",
+  guide:"查看入住指南",airbnb:"在Airbnb查看",contact:"如有疑问，请通过您预订的平台发送消息。"}
+};
+const sel=document.getElementById('lang');
+function apply(l){
+  const d=T[l]||T.ko;
+  document.documentElement.lang={ko:'ko',en:'en',ja:'ja',zh:'zh-CN'}[l]||'ko';
+  document.querySelectorAll('[data-t]').forEach(el=>{const k=el.dataset.t;if(d[k])el.textContent=d[k];});
+  try{localStorage.setItem('asanstay-lang',l);}catch(e){}
+}
+let start='';
+try{start=localStorage.getItem('asanstay-lang')||'';}catch(e){}
+if(!T[start]){const n=(navigator.language||'').toLowerCase();start=n.startsWith('ko')?'ko':n.startsWith('ja')?'ja':n.startsWith('zh')?'zh':'en';}
+sel.value=start;apply(start);
+sel.addEventListener('change',e=>apply(e.target.value));
+</script>
+</body>
+</html>
