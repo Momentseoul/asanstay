@@ -3,70 +3,79 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Asan Stay</title>
+<title>Staywith</title>
 <meta name="description" content="잠실과 대치동, 두 곳의 숙소. 머무는 곳의 안내를 열어 보세요.">
-<meta property="og:title" content="Asan Stay">
+<meta property="og:title" content="Staywith">
 <meta property="og:description" content="Moment Seoul · Daechi Stay guest guides">
 <meta property="og:image" content="https://asanstay.com/img/moment.jpg">
 <meta name="theme-color" content="#F7F7F5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
   :root{
-    --ink:#222826; --sub:#6E7471; --line:#E2E3DF; --bg:#F7F7F5;
+    --ink:#161a18; --sub:#3f4542; --line:#DCDDD8; --bg:#F7F7F5;
     --gutter:clamp(16px, 4vw, 48px);
   }
   *{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{margin:0;background:var(--bg);color:var(--ink);
     font-family:"Pretendard Variable",Pretendard,-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Hiragino Sans","PingFang SC","PingFang TC","Microsoft YaHei","Malgun Gothic",sans-serif;
-    font-size:16px;line-height:1.6;letter-spacing:-.005em;-webkit-font-smoothing:antialiased}
+    font-size:16px;line-height:1.55;letter-spacing:-.005em;font-weight:500;-webkit-font-smoothing:antialiased}
   a{color:inherit}
   a:focus-visible,select:focus-visible{outline:2px solid var(--ink);outline-offset:3px;border-radius:2px}
 
-  .top{display:flex;align-items:center;justify-content:space-between;padding:22px var(--gutter);max-width:1440px;margin:0 auto}
-  .mark{font-size:20px;font-weight:300;letter-spacing:.02em;text-decoration:none}
+  .top{display:flex;align-items:center;justify-content:space-between;padding:14px var(--gutter);max-width:1440px;margin:0 auto}
+  .mark{font-size:21px;font-weight:600;letter-spacing:-.01em;text-decoration:none}
   .lang{position:relative}
   .lang select{appearance:none;-webkit-appearance:none;background:transparent;border:1px solid var(--line);border-radius:999px;
-    padding:7px 30px 7px 14px;font:inherit;font-size:14px;color:var(--ink);cursor:pointer}
-  .lang::after{content:"";position:absolute;right:13px;top:50%;width:6px;height:6px;border-right:1.2px solid var(--sub);
-    border-bottom:1.2px solid var(--sub);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+    padding:6px 28px 6px 13px;font:inherit;font-size:13.5px;font-weight:500;color:var(--ink);cursor:pointer}
+  .lang::after{content:"";position:absolute;right:12px;top:50%;width:6px;height:6px;border-right:1.5px solid var(--sub);
+    border-bottom:1.5px solid var(--sub);transform:translateY(-70%) rotate(45deg);pointer-events:none}
 
-  .intro{padding:clamp(28px,7vw,88px) var(--gutter) clamp(28px,5vw,56px);max-width:1440px;margin:0 auto}
-  .intro h1{margin:0;font-weight:250;font-size:clamp(44px,9.5vw,132px);line-height:.98;letter-spacing:-.035em}
+  .intro{padding:clamp(10px,2.5vw,36px) var(--gutter) clamp(16px,2.5vw,32px);max-width:1440px;margin:0 auto}
+  .intro h1{margin:0;font-weight:500;font-size:clamp(34px,6vw,76px);line-height:1;letter-spacing:-.035em}
   .intro h1 span{display:block}
-  .intro h1 span + span{color:var(--sub)}
-  .intro p{margin:clamp(20px,3vw,32px) 0 0;font-size:clamp(16px,1.6vw,19px);color:var(--sub);max-width:34em}
+  .intro h1 span + span{color:#5b615e}
+  .intro p{margin:clamp(10px,1.6vw,18px) 0 0;font-size:clamp(14px,1.4vw,17px);color:var(--sub);max-width:34em}
 
-  .stays{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(10px,1.4vw,20px);padding:0 var(--gutter);max-width:1440px;margin:0 auto}
+  .stays{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(10px,1.6vw,24px);padding:0 var(--gutter);max-width:1440px;margin:0 auto}
   .stay{display:flex;flex-direction:column;min-width:0}
-  .stay figure{margin:0;position:relative;overflow:hidden;border-radius:3px;background:var(--line);aspect-ratio:3/4}
+  .stay figure{margin:0;position:relative;overflow:hidden;border-radius:4px;background:var(--line);aspect-ratio:16/10}
   .stay figure a{display:block;height:100%}
   .stay img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
   .stay figure a:hover img{transform:scale(1.025)}
-  .stay .body{padding:20px 2px 0;display:flex;flex-direction:column;flex:1}
-  .stay h2{margin:0;font-size:clamp(22px,2.2vw,30px);font-weight:500;letter-spacing:-.02em;line-height:1.2;display:flex;align-items:center;gap:10px}
+  .stay .body{padding:14px 2px 0;display:flex;flex-direction:column;flex:1}
+  .stay h2{margin:0;font-size:clamp(18px,2vw,26px);font-weight:700;letter-spacing:-.02em;line-height:1.2;display:flex;align-items:center;gap:8px}
   .stay h2::before{content:"";width:9px;height:9px;border-radius:50%;background:var(--c);flex:0 0 auto}
-  .stay .area{margin:6px 0 0;font-size:14px;color:var(--sub)}
-  .stay .tag{margin:14px 0 0;font-size:17px;line-height:1.5}
-  .stay ul{list-style:none;margin:14px 0 0;padding:14px 0 0;border-top:1px solid var(--line);font-size:14.5px;color:var(--sub)}
-  .stay li + li{margin-top:2px}
-  .actions{margin-top:auto;padding-top:22px;display:flex;flex-wrap:wrap;gap:8px}
-  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 20px;border-radius:999px;
-    font-size:15px;font-weight:500;text-decoration:none;white-space:nowrap}
+  .stay .area{margin:4px 0 0;font-size:13.5px;color:var(--sub)}
+  .stay .tag{margin:10px 0 0;font-size:16px;font-weight:600;line-height:1.45}
+  .stay ul{list-style:none;margin:10px 0 0;padding:10px 0 0;border-top:1px solid var(--line);font-size:14px;color:var(--sub)}
+  .stay li + li{margin-top:1px}
+  .actions{margin-top:auto;padding-top:14px;display:flex;flex-wrap:wrap;gap:8px}
+  .btn{display:inline-flex;align-items:center;justify-content:center;min-height:42px;padding:0 18px;border-radius:999px;
+    font-size:14.5px;font-weight:600;text-decoration:none;white-space:nowrap}
   .btn.main{background:var(--c);color:#fff}
   .btn.main:hover{filter:brightness(1.08)}
-  .btn.line{border:1px solid var(--line);background:#fff}
+  .btn.line{border:1px solid #c9cbc5;background:#fff}
   .btn.line:hover{border-color:var(--sub)}
 
-  .foot{max-width:1440px;margin:clamp(64px,9vw,120px) auto 0;padding:28px var(--gutter) calc(36px + env(safe-area-inset-bottom));
-    border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:20px 48px;justify-content:space-between;font-size:14px;color:var(--sub)}
-  .foot .slogan{color:var(--ink);font-weight:300;font-size:18px;letter-spacing:-.01em}
+  .foot{max-width:1440px;margin:clamp(48px,7vw,96px) auto 0;padding:24px var(--gutter) calc(32px + env(safe-area-inset-bottom));
+    border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:16px 48px;justify-content:space-between;font-size:14px;color:var(--sub)}
+  .foot .slogan{color:var(--ink);font-weight:700;font-size:18px;letter-spacing:-.01em}
   .foot dl{margin:0;display:grid;grid-template-columns:auto auto;gap:4px 18px}
-  .foot dd{margin:0;color:var(--ink)}
+  .foot dd{margin:0;color:var(--ink);font-weight:600}
 
-  @media (max-width:900px){
-    .stays{grid-template-columns:1fr;gap:56px}
-    .stay figure{aspect-ratio:4/3}
+  /* 휴대폰: 숙소 두 개를 나란히, 첫 화면에 모두 보이게 */
+  @media (max-width:700px){
+    .stays{gap:10px}
+    .stay figure{aspect-ratio:1/1}
+    .stay .body{padding-top:10px}
+    .stay h2{font-size:17px;gap:6px}
+    .stay h2::before{width:7px;height:7px}
+    .stay .area{font-size:12px}
+    .stay .tag{font-size:13.5px;margin-top:6px}
+    .stay ul{font-size:12.5px;margin-top:8px;padding-top:8px;line-height:1.5}
+    .actions{flex-direction:column;gap:6px;padding-top:10px}
+    .btn{width:100%;min-height:40px;font-size:13.5px;padding:0 10px}
   }
   @media (prefers-reduced-motion:reduce){
     .stay img{transition:none}
@@ -76,7 +85,7 @@
 </head>
 <body>
 <header class="top">
-  <a class="mark" href="/">asan stay</a>
+  <a class="mark" href="/">Staywith</a>
   <label class="lang">
     <select id="lang" aria-label="Language">
       <option value="ko">한국어</option>
@@ -133,7 +142,7 @@
 
 <footer class="foot">
   <div>
-    <div class="slogan">Asan Stay</div>
+    <div class="slogan">Staywith</div>
     <div data-t="contact">문의는 예약하신 사이트의 메시지로 보내 주세요.</div>
   </div>
   <dl>
@@ -165,10 +174,10 @@ function apply(l){
   const d=T[l]||T.ko;
   document.documentElement.lang={ko:'ko',en:'en',ja:'ja',zh:'zh-CN'}[l]||'ko';
   document.querySelectorAll('[data-t]').forEach(el=>{const k=el.dataset.t;if(d[k])el.textContent=d[k];});
-  try{localStorage.setItem('asanstay-lang',l);}catch(e){}
+  try{localStorage.setItem('staywith-lang',l);}catch(e){}
 }
 let start='';
-try{start=localStorage.getItem('asanstay-lang')||'';}catch(e){}
+try{start=localStorage.getItem('staywith-lang')||'';}catch(e){}
 if(!T[start]){const n=(navigator.language||'').toLowerCase();start=n.startsWith('ko')?'ko':n.startsWith('ja')?'ja':n.startsWith('zh')?'zh':'en';}
 sel.value=start;apply(start);
 sel.addEventListener('change',e=>apply(e.target.value));
