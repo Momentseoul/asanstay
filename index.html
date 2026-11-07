@@ -26,10 +26,13 @@
   .top{display:flex;align-items:center;justify-content:space-between;padding:14px var(--gutter);max-width:1440px;margin:0 auto}
   .mark{font-size:21px;font-weight:600;letter-spacing:-.01em;text-decoration:none}
   .lang{position:relative}
-  .lang select{appearance:none;-webkit-appearance:none;background:transparent;border:1px solid var(--line);border-radius:999px;
-    padding:6px 28px 6px 13px;font:inherit;font-size:13.5px;font-weight:500;color:var(--ink);cursor:pointer}
-  .lang::after{content:"";position:absolute;right:12px;top:50%;width:6px;height:6px;border-right:1.5px solid var(--sub);
-    border-bottom:1.5px solid var(--sub);transform:translateY(-70%) rotate(45deg);pointer-events:none}
+  .lang-cur{display:grid;place-items:center;width:58px;height:40px;border-radius:999px;border:1px solid var(--line);background:#fff;cursor:pointer;padding:0}
+  .lang svg{display:block;width:28px;height:19px;border-radius:3px;box-shadow:0 0 0 1px rgba(0,0,0,.12)}
+  .lang-menu{display:none;position:absolute;right:0;top:calc(100% + 8px);z-index:20;padding:6px;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 10px 30px rgba(0,0,0,.14)}
+  .lang.open .lang-menu{display:block}
+  .lang-menu button{display:grid;place-items:center;width:64px;height:48px;border:0;border-radius:10px;background:transparent;cursor:pointer;padding:0}
+  .lang-menu button svg{width:32px;height:21px}
+  .lang-menu button.on{background:#F1EFEA}
 
   .intro{padding:clamp(10px,2.5vw,36px) var(--gutter) clamp(16px,2.5vw,32px);max-width:1440px;margin:0 auto}
   .intro h1{margin:0;font-weight:500;font-size:clamp(34px,6vw,76px);line-height:1;letter-spacing:-.035em}
@@ -83,8 +86,8 @@
     .top,.intro,.stays,.foot{max-width:1760px}
     .top{padding-top:28px;padding-bottom:28px}
     .mark{font-size:clamp(26px,1.8vw,32px)}
-    .lang select{font-size:16px;padding:10px 36px 10px 18px}
-    .lang::after{right:15px}
+    .lang-cur{width:66px;height:46px}
+    .lang-cur svg{width:32px;height:21px}
     .intro{padding-top:clamp(32px,3vw,56px);padding-bottom:clamp(36px,3vw,56px)}
     .intro h1{font-size:clamp(72px,6.4vw,124px)}
     .intro p{font-size:clamp(19px,1.45vw,26px);margin-top:26px;max-width:none}
@@ -110,14 +113,10 @@
 <body>
 <header class="top">
   <a class="mark" href="/">Staywith</a>
-  <label class="lang">
-    <select id="lang" aria-label="Language">
-      <option value="ko">한국어</option>
-      <option value="en">English</option>
-      <option value="ja">日本語</option>
-      <option value="zh">简体中文</option>
-    </select>
-  </label>
+  <div class="lang" id="langsel">
+    <button type="button" class="lang-cur" id="langcur" aria-label="Language" aria-haspopup="true"></button>
+    <div class="lang-menu" role="menu"><button type="button" role="menuitemradio" data-l="ko" aria-label="한국어" title="한국어"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><g transform="rotate(33.69 15 10)"><path d="M10 10a5 5 0 0 1 10 0z" fill="#CD2E3A"/><path d="M10 10a5 5 0 0 0 10 0z" fill="#0047A0"/><circle cx="12.5" cy="10" r="2.5" fill="#CD2E3A"/><circle cx="17.5" cy="10" r="2.5" fill="#0047A0"/></g><g transform="rotate(33.690067525979785 5.3 3.6)" fill="#000"><rect x="3.20" y="1.2000000000000002" width="0.75" height="4.8"/><rect x="4.50" y="1.2000000000000002" width="0.75" height="4.8"/><rect x="5.80" y="1.2000000000000002" width="0.75" height="4.8"/></g><g transform="rotate(33.690067525979785 24.7 16.4)" fill="#000"><rect x="22.60" y="13.999999999999998" width="0.75" height="4.8"/><rect x="23.90" y="13.999999999999998" width="0.75" height="4.8"/><rect x="25.20" y="13.999999999999998" width="0.75" height="4.8"/></g><g transform="rotate(-33.690067525979785 24.7 3.6)" fill="#000"><rect x="22.60" y="1.2000000000000002" width="0.75" height="4.8"/><rect x="23.90" y="1.2000000000000002" width="0.75" height="4.8"/><rect x="25.20" y="1.2000000000000002" width="0.75" height="4.8"/></g><g transform="rotate(-33.690067525979785 5.3 16.4)" fill="#000"><rect x="3.20" y="13.999999999999998" width="0.75" height="4.8"/><rect x="4.50" y="13.999999999999998" width="0.75" height="4.8"/><rect x="5.80" y="13.999999999999998" width="0.75" height="4.8"/></g></svg></button><button type="button" role="menuitemradio" data-l="en" aria-label="English" title="English"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><rect y="0.00" width="30" height="1.54" fill="#B22234"/><rect y="3.08" width="30" height="1.54" fill="#B22234"/><rect y="6.15" width="30" height="1.54" fill="#B22234"/><rect y="9.23" width="30" height="1.54" fill="#B22234"/><rect y="12.31" width="30" height="1.54" fill="#B22234"/><rect y="15.38" width="30" height="1.54" fill="#B22234"/><rect y="18.46" width="30" height="1.54" fill="#B22234"/><rect width="13" height="10.77" fill="#3C3B6E"/><circle cx="1.40" cy="1.50" r="0.5" fill="#fff"/><circle cx="3.95" cy="1.50" r="0.5" fill="#fff"/><circle cx="6.50" cy="1.50" r="0.5" fill="#fff"/><circle cx="9.05" cy="1.50" r="0.5" fill="#fff"/><circle cx="11.60" cy="1.50" r="0.5" fill="#fff"/><circle cx="1.40" cy="4.10" r="0.5" fill="#fff"/><circle cx="3.95" cy="4.10" r="0.5" fill="#fff"/><circle cx="6.50" cy="4.10" r="0.5" fill="#fff"/><circle cx="9.05" cy="4.10" r="0.5" fill="#fff"/><circle cx="11.60" cy="4.10" r="0.5" fill="#fff"/><circle cx="1.40" cy="6.70" r="0.5" fill="#fff"/><circle cx="3.95" cy="6.70" r="0.5" fill="#fff"/><circle cx="6.50" cy="6.70" r="0.5" fill="#fff"/><circle cx="9.05" cy="6.70" r="0.5" fill="#fff"/><circle cx="11.60" cy="6.70" r="0.5" fill="#fff"/><circle cx="1.40" cy="9.30" r="0.5" fill="#fff"/><circle cx="3.95" cy="9.30" r="0.5" fill="#fff"/><circle cx="6.50" cy="9.30" r="0.5" fill="#fff"/><circle cx="9.05" cy="9.30" r="0.5" fill="#fff"/><circle cx="11.60" cy="9.30" r="0.5" fill="#fff"/></svg></button><button type="button" role="menuitemradio" data-l="ja" aria-label="日本語" title="日本語"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#fff"/><circle cx="15" cy="10" r="6" fill="#BC002D"/></svg></button><button type="button" role="menuitemradio" data-l="zh" aria-label="简体中文" title="简体中文"><svg viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" fill="#DE2910"/><polygon fill="#FFDE00" points="5.00,2.00 5.67,4.07 7.85,4.07 6.09,5.35 6.76,7.43 5.00,6.15 3.24,7.43 3.91,5.35 2.15,4.07 4.33,4.07"/><polygon fill="#FFDE00" points="9.14,2.51 9.62,1.97 9.25,1.34 9.91,1.63 10.39,1.08 10.33,1.80 11.00,2.09 10.29,2.25 10.22,2.97 9.85,2.35"/><polygon fill="#FFDE00" points="11.01,4.14 11.66,3.82 11.56,3.10 12.07,3.62 12.72,3.30 12.38,3.95 12.88,4.47 12.17,4.34 11.83,4.99 11.73,4.27"/><polygon fill="#FFDE00" points="11.04,6.73 11.76,6.70 11.96,6.00 12.21,6.68 12.94,6.66 12.37,7.10 12.62,7.79 12.01,7.38 11.44,7.83 11.64,7.13"/><polygon fill="#FFDE00" points="9.22,8.38 9.90,8.63 10.35,8.06 10.32,8.79 11.00,9.05 10.30,9.24 10.26,9.96 9.87,9.36 9.16,9.55 9.62,8.98"/></svg></button></div>
+  </div>
 </header>
 
 <main>
@@ -194,18 +193,24 @@ const T={
   d_area:"首尔江南区 · 大峙洞",d_tag:"江南的每个行程，近在咫尺。",d_f1:"步行10分钟至韩亭站",d_f2:"最多6人，3张大床",d_f3:"长住优惠",
   guide:"查看入住指南",airbnb:"在Airbnb查看",contact:"如有疑问，请通过您预订的平台发送消息。"}
 };
-const sel=document.getElementById('lang');
+const FL={"ko": "<svg viewBox=\"0 0 30 20\" aria-hidden=\"true\"><rect width=\"30\" height=\"20\" fill=\"#fff\"/><g transform=\"rotate(33.69 15 10)\"><path d=\"M10 10a5 5 0 0 1 10 0z\" fill=\"#CD2E3A\"/><path d=\"M10 10a5 5 0 0 0 10 0z\" fill=\"#0047A0\"/><circle cx=\"12.5\" cy=\"10\" r=\"2.5\" fill=\"#CD2E3A\"/><circle cx=\"17.5\" cy=\"10\" r=\"2.5\" fill=\"#0047A0\"/></g><g transform=\"rotate(33.690067525979785 5.3 3.6)\" fill=\"#000\"><rect x=\"3.20\" y=\"1.2000000000000002\" width=\"0.75\" height=\"4.8\"/><rect x=\"4.50\" y=\"1.2000000000000002\" width=\"0.75\" height=\"4.8\"/><rect x=\"5.80\" y=\"1.2000000000000002\" width=\"0.75\" height=\"4.8\"/></g><g transform=\"rotate(33.690067525979785 24.7 16.4)\" fill=\"#000\"><rect x=\"22.60\" y=\"13.999999999999998\" width=\"0.75\" height=\"4.8\"/><rect x=\"23.90\" y=\"13.999999999999998\" width=\"0.75\" height=\"4.8\"/><rect x=\"25.20\" y=\"13.999999999999998\" width=\"0.75\" height=\"4.8\"/></g><g transform=\"rotate(-33.690067525979785 24.7 3.6)\" fill=\"#000\"><rect x=\"22.60\" y=\"1.2000000000000002\" width=\"0.75\" height=\"4.8\"/><rect x=\"23.90\" y=\"1.2000000000000002\" width=\"0.75\" height=\"4.8\"/><rect x=\"25.20\" y=\"1.2000000000000002\" width=\"0.75\" height=\"4.8\"/></g><g transform=\"rotate(-33.690067525979785 5.3 16.4)\" fill=\"#000\"><rect x=\"3.20\" y=\"13.999999999999998\" width=\"0.75\" height=\"4.8\"/><rect x=\"4.50\" y=\"13.999999999999998\" width=\"0.75\" height=\"4.8\"/><rect x=\"5.80\" y=\"13.999999999999998\" width=\"0.75\" height=\"4.8\"/></g></svg>", "en": "<svg viewBox=\"0 0 30 20\" aria-hidden=\"true\"><rect width=\"30\" height=\"20\" fill=\"#fff\"/><rect y=\"0.00\" width=\"30\" height=\"1.54\" fill=\"#B22234\"/><rect y=\"3.08\" width=\"30\" height=\"1.54\" fill=\"#B22234\"/><rect y=\"6.15\" width=\"30\" height=\"1.54\" fill=\"#B22234\"/><rect y=\"9.23\" width=\"30\" height=\"1.54\" fill=\"#B22234\"/><rect y=\"12.31\" width=\"30\" height=\"1.54\" fill=\"#B22234\"/><rect y=\"15.38\" width=\"30\" height=\"1.54\" fill=\"#B22234\"/><rect y=\"18.46\" width=\"30\" height=\"1.54\" fill=\"#B22234\"/><rect width=\"13\" height=\"10.77\" fill=\"#3C3B6E\"/><circle cx=\"1.40\" cy=\"1.50\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"3.95\" cy=\"1.50\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"6.50\" cy=\"1.50\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"9.05\" cy=\"1.50\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"11.60\" cy=\"1.50\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"1.40\" cy=\"4.10\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"3.95\" cy=\"4.10\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"6.50\" cy=\"4.10\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"9.05\" cy=\"4.10\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"11.60\" cy=\"4.10\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"1.40\" cy=\"6.70\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"3.95\" cy=\"6.70\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"6.50\" cy=\"6.70\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"9.05\" cy=\"6.70\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"11.60\" cy=\"6.70\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"1.40\" cy=\"9.30\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"3.95\" cy=\"9.30\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"6.50\" cy=\"9.30\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"9.05\" cy=\"9.30\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"11.60\" cy=\"9.30\" r=\"0.5\" fill=\"#fff\"/></svg>", "ja": "<svg viewBox=\"0 0 30 20\" aria-hidden=\"true\"><rect width=\"30\" height=\"20\" fill=\"#fff\"/><circle cx=\"15\" cy=\"10\" r=\"6\" fill=\"#BC002D\"/></svg>", "zh": "<svg viewBox=\"0 0 30 20\" aria-hidden=\"true\"><rect width=\"30\" height=\"20\" fill=\"#DE2910\"/><polygon fill=\"#FFDE00\" points=\"5.00,2.00 5.67,4.07 7.85,4.07 6.09,5.35 6.76,7.43 5.00,6.15 3.24,7.43 3.91,5.35 2.15,4.07 4.33,4.07\"/><polygon fill=\"#FFDE00\" points=\"9.14,2.51 9.62,1.97 9.25,1.34 9.91,1.63 10.39,1.08 10.33,1.80 11.00,2.09 10.29,2.25 10.22,2.97 9.85,2.35\"/><polygon fill=\"#FFDE00\" points=\"11.01,4.14 11.66,3.82 11.56,3.10 12.07,3.62 12.72,3.30 12.38,3.95 12.88,4.47 12.17,4.34 11.83,4.99 11.73,4.27\"/><polygon fill=\"#FFDE00\" points=\"11.04,6.73 11.76,6.70 11.96,6.00 12.21,6.68 12.94,6.66 12.37,7.10 12.62,7.79 12.01,7.38 11.44,7.83 11.64,7.13\"/><polygon fill=\"#FFDE00\" points=\"9.22,8.38 9.90,8.63 10.35,8.06 10.32,8.79 11.00,9.05 10.30,9.24 10.26,9.96 9.87,9.36 9.16,9.55 9.62,8.98\"/></svg>"};
+const box=document.getElementById('langsel'), cur=document.getElementById('langcur');
 function apply(l){
   const d=T[l]||T.ko;
   document.documentElement.lang={ko:'ko',en:'en',ja:'ja',zh:'zh-CN'}[l]||'ko';
   document.querySelectorAll('[data-t]').forEach(el=>{const k=el.dataset.t;if(d[k])el.textContent=d[k];});
+  cur.innerHTML=FL[l]||FL.ko;
+  box.querySelectorAll('[data-l]').forEach(b=>{const on=b.dataset.l===l;b.classList.toggle('on',on);b.setAttribute('aria-checked',on);});
+  box.classList.remove('open');
   try{localStorage.setItem('staywith-lang',l);}catch(e){}
 }
 let start='';
 try{start=localStorage.getItem('staywith-lang')||'';}catch(e){}
 if(!T[start]){const n=(navigator.language||'').toLowerCase();start=n.startsWith('ko')?'ko':n.startsWith('ja')?'ja':n.startsWith('zh')?'zh':'en';}
-sel.value=start;apply(start);
-sel.addEventListener('change',e=>apply(e.target.value));
+apply(start);
+cur.addEventListener('click',e=>{e.stopPropagation();box.classList.toggle('open');});
+box.querySelectorAll('[data-l]').forEach(b=>b.addEventListener('click',()=>apply(b.dataset.l)));
+document.addEventListener('click',e=>{if(!box.contains(e.target))box.classList.remove('open');});
 </script>
 </body>
 </html>
