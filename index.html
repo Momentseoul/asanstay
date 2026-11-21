@@ -6,7 +6,7 @@
 <title>Staywith</title>
 <meta name="description" content="머무는 숙소를 선택하세요.">
 <meta property="og:title" content="Staywith">
-<meta property="og:description" content="Moment Seoul · Daechi Stay guest guides">
+<meta property="og:description" content="Moment Seoul · Daechi Stay · Yeonjeong guest guides">
 <meta property="og:image" content="https://asanstay.com/img/moment.jpg">
 <meta name="theme-color" content="#F7F7F5">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
@@ -40,7 +40,7 @@
   .intro h1 span + span{color:#5b615e}
   .intro p{margin:clamp(10px,1.6vw,18px) 0 0;font-size:clamp(14px,1.4vw,17px);color:var(--sub);max-width:34em}
 
-  .stays{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(10px,1.6vw,24px);padding:0 var(--gutter);max-width:1440px;margin:0 auto}
+  .stays{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(10px,1.6vw,24px);padding:0 var(--gutter);max-width:1440px;margin:0 auto}
   .stay{display:flex;flex-direction:column;min-width:0}
   .stay figure{margin:0;position:relative;overflow:hidden;border-radius:4px;background:var(--line);aspect-ratio:16/10}
   .stay figure a{display:block;height:100%}
@@ -67,17 +67,18 @@
   .foot dl{margin:0;display:grid;grid-template-columns:auto auto;gap:4px 18px}
   .foot dd{margin:0;color:var(--ink);font-weight:600}
 
-  /* 휴대폰: 숙소 두 개를 나란히, 첫 화면에 모두 보이게 */
+  /* 휴대폰: 숙소 세 곳을 한 줄씩(사진 왼쪽 · 정보 오른쪽), 첫 화면에 모두 보이게 */
   @media (max-width:700px){
-    .stays{gap:10px}
-    .stay figure{aspect-ratio:1/1}
-    .stay .body{padding-top:10px}
+    .stays{grid-template-columns:1fr;gap:14px}
+    .stay{flex-direction:row;gap:12px}
+    .stay figure{flex:0 0 40%;aspect-ratio:auto;min-height:150px;align-self:stretch}
+    .stay .body{padding-top:0;flex:1;min-width:0}
     .stay h2{font-size:17px;gap:6px}
     .stay h2::before{width:7px;height:7px}
     .stay .area{font-size:12px}
     .stay .tag{font-size:13.5px;margin-top:6px}
     .stay ul{font-size:12.5px;margin-top:8px;padding-top:8px;line-height:1.5}
-    .actions{flex-direction:column;gap:6px;padding-top:10px}
+    .actions{flex-direction:column;gap:6px;padding-top:8px}
     .btn{width:100%;min-height:40px;font-size:13.5px;padding:0 10px}
   }
   /* 컴퓨터(넓은 화면): 화면 폭을 넓게 쓰고 글씨·버튼을 화면에 맞춰 크게 */
@@ -163,6 +164,24 @@
         </div>
       </div>
     </article>
+
+    <article class="stay" style="--c:#8A5A3B">
+      <figure><a href="https://yeonjeong.vercel.app/"><img src="img/yeonjeong.jpg" alt="Yeonjeong" loading="lazy"></a></figure>
+      <div class="body">
+        <h2>Yeonjeong</h2>
+        <p class="area" data-t="y_area">서울 관악구, 신림동</p>
+        <p class="tag" data-t="y_tag">서울의 하루가 따뜻하게 머무는 곳.</p>
+        <ul>
+          <li data-t="y_f1">당곡역 도보 7분 · 신림역 도보 10분</li>
+          <li data-t="y_f2">최대 6명, 침대 3개 + 소파베드</li>
+          <li data-t="y_f3">인근 유료·공영 주차장 이용</li>
+          <li data-t="y_f4">전용 출입구 · 짐 보관 가능</li>
+        </ul>
+        <div class="actions">
+          <a class="btn main" href="https://yeonjeong.vercel.app/" data-t="guide">숙소 안내 보기</a>
+        </div>
+      </div>
+    </article>
   </section>
 </main>
 
@@ -181,18 +200,22 @@ const T={
  ko:{intro:"머무는 숙소를 선택하세요.",
   m_area:"서울 송파구, 잠실",m_tag:"그림이 걸린, 갤러리 같은 집.",m_f1:"삼전역 도보 10분",m_f2:"최대 8명, 퀸베드 4개",m_f3:"무료 주차 1대",m_f4:"세탁기·건조기 자유 이용",
   d_area:"서울 강남구, 대치동",d_tag:"강남의 모든 일정이 가까워지는 곳.",d_f1:"한티역 도보 10분",d_f2:"최대 6명, 퀸베드 3개",d_f3:"인근 유료주차장 이용",d_f4:"장기 투숙 혜택",
+  y_area:"서울 관악구, 신림동",y_tag:"서울의 하루가 따뜻하게 머무는 곳.",y_f1:"당곡역 도보 7분 · 신림역 도보 10분",y_f2:"최대 6명, 침대 3개 + 소파베드",y_f3:"인근 유료·공영 주차장 이용",y_f4:"전용 출입구 · 짐 보관 가능",
   guide:"숙소 안내 보기",airbnb:"에어비앤비에서 보기",contact:"문의는 예약하신 사이트의 메시지로 보내 주세요."},
  en:{intro:"Choose the home you’re staying at.",
   m_area:"Jamsil, Songpa-gu, Seoul",m_tag:"A gallery-like home in Jamsil.",m_f1:"10 min walk to Samjeon Station",m_f2:"Up to 8 guests, 4 queen beds",m_f3:"1 free parking space",m_f4:"Washer & dryer, free to use",
   d_area:"Daechi-dong, Gangnam-gu, Seoul",d_tag:"Everything in Gangnam, close at hand.",d_f1:"10 min walk to Hanti Station",d_f2:"Up to 6 guests, 3 queen beds",d_f3:"Paid parking nearby",d_f4:"Long-stay benefits",
+  y_area:"Sillim-dong, Gwanak-gu, Seoul",y_tag:"Where your day in Seoul stays warm.",y_f1:"7 min walk to Danggok Station · 10 min to Sillim",y_f2:"Up to 6 guests, 3 beds + sofa bed",y_f3:"Paid & public parking nearby",y_f4:"Private entrance · Luggage storage",
   guide:"Open guest guide",airbnb:"View on Airbnb",contact:"For questions, message us on the site you booked with."},
  ja:{intro:"ご滞在のお宿をお選びください。",
   m_area:"ソウル松坡区・蚕室",m_tag:"絵が飾られた、ギャラリーのような家。",m_f1:"サムジョン駅から徒歩10分",m_f2:"最大8名、クイーンベッド4台",m_f3:"無料駐車場1台",m_f4:"洗濯機・乾燥機ご自由にどうぞ",
   d_area:"ソウル江南区・大峙洞",d_tag:"江南のすべての予定が近くなる場所。",d_f1:"ハンティ駅から徒歩10分",d_f2:"最大6名、クイーンベッド3台",d_f3:"近くの有料駐車場をご利用ください",d_f4:"長期滞在特典",
+  y_area:"ソウル冠岳区・新林洞",y_tag:"ソウルの一日が、あたたかく落ち着く場所。",y_f1:"堂谷駅から徒歩7分・新林駅から徒歩10分",y_f2:"最大6名、ベッド3台＋ソファベッド",y_f3:"近くの有料・公営駐車場をご利用ください",y_f4:"専用出入口・荷物お預かり可",
   guide:"宿のご案内を見る",airbnb:"Airbnbで見る",contact:"ご質問はご予約サイトのメッセージからお送りください。"},
  zh:{intro:"请选择您入住的房源。",
   m_area:"首尔松坡区 · 蚕室",m_tag:"挂满画作、如画廊般的家。",m_f1:"步行10分钟至三田站",m_f2:"最多8人，4张大床",m_f3:"免费停车位1个",m_f4:"洗衣机、烘干机可自由使用",
   d_area:"首尔江南区 · 大峙洞",d_tag:"江南的每个行程，近在咫尺。",d_f1:"步行10分钟至韩亭站",d_f2:"最多6人，3张大床",d_f3:"可使用附近收费停车场",d_f4:"长住优惠",
+  y_area:"首尔冠岳区 · 新林洞",y_tag:"让首尔的一天温暖停留的地方。",y_f1:"步行7分钟至堂谷站 · 10分钟至新林站",y_f2:"最多6人，3张床＋沙发床",y_f3:"可使用附近收费・公营停车场",y_f4:"独立出入口 · 可寄放行李",
   guide:"查看入住指南",airbnb:"在Airbnb查看",contact:"如有疑问，请通过您预订的平台发送消息。"}
 };
 const FL={"ko": "<svg viewBox=\"0 0 30 20\" aria-hidden=\"true\"><rect width=\"30\" height=\"20\" fill=\"#fff\"/><g transform=\"rotate(33.69 15 10)\"><path d=\"M10 10a5 5 0 0 1 10 0z\" fill=\"#CD2E3A\"/><path d=\"M10 10a5 5 0 0 0 10 0z\" fill=\"#0047A0\"/><circle cx=\"12.5\" cy=\"10\" r=\"2.5\" fill=\"#CD2E3A\"/><circle cx=\"17.5\" cy=\"10\" r=\"2.5\" fill=\"#0047A0\"/></g><g transform=\"rotate(33.690067525979785 5.3 3.6)\" fill=\"#000\"><rect x=\"3.20\" y=\"1.2000000000000002\" width=\"0.75\" height=\"4.8\"/><rect x=\"4.50\" y=\"1.2000000000000002\" width=\"0.75\" height=\"4.8\"/><rect x=\"5.80\" y=\"1.2000000000000002\" width=\"0.75\" height=\"4.8\"/></g><g transform=\"rotate(33.690067525979785 24.7 16.4)\" fill=\"#000\"><rect x=\"22.60\" y=\"13.999999999999998\" width=\"0.75\" height=\"4.8\"/><rect x=\"23.90\" y=\"13.999999999999998\" width=\"0.75\" height=\"4.8\"/><rect x=\"25.20\" y=\"13.999999999999998\" width=\"0.75\" height=\"4.8\"/></g><g transform=\"rotate(-33.690067525979785 24.7 3.6)\" fill=\"#000\"><rect x=\"22.60\" y=\"1.2000000000000002\" width=\"0.75\" height=\"4.8\"/><rect x=\"23.90\" y=\"1.2000000000000002\" width=\"0.75\" height=\"4.8\"/><rect x=\"25.20\" y=\"1.2000000000000002\" width=\"0.75\" height=\"4.8\"/></g><g transform=\"rotate(-33.690067525979785 5.3 16.4)\" fill=\"#000\"><rect x=\"3.20\" y=\"13.999999999999998\" width=\"0.75\" height=\"4.8\"/><rect x=\"4.50\" y=\"13.999999999999998\" width=\"0.75\" height=\"4.8\"/><rect x=\"5.80\" y=\"13.999999999999998\" width=\"0.75\" height=\"4.8\"/></g></svg>", "en": "<svg viewBox=\"0 0 30 20\" aria-hidden=\"true\"><rect width=\"30\" height=\"20\" fill=\"#fff\"/><rect y=\"0.00\" width=\"30\" height=\"1.54\" fill=\"#B22234\"/><rect y=\"3.08\" width=\"30\" height=\"1.54\" fill=\"#B22234\"/><rect y=\"6.15\" width=\"30\" height=\"1.54\" fill=\"#B22234\"/><rect y=\"9.23\" width=\"30\" height=\"1.54\" fill=\"#B22234\"/><rect y=\"12.31\" width=\"30\" height=\"1.54\" fill=\"#B22234\"/><rect y=\"15.38\" width=\"30\" height=\"1.54\" fill=\"#B22234\"/><rect y=\"18.46\" width=\"30\" height=\"1.54\" fill=\"#B22234\"/><rect width=\"13\" height=\"10.77\" fill=\"#3C3B6E\"/><circle cx=\"1.40\" cy=\"1.50\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"3.95\" cy=\"1.50\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"6.50\" cy=\"1.50\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"9.05\" cy=\"1.50\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"11.60\" cy=\"1.50\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"1.40\" cy=\"4.10\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"3.95\" cy=\"4.10\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"6.50\" cy=\"4.10\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"9.05\" cy=\"4.10\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"11.60\" cy=\"4.10\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"1.40\" cy=\"6.70\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"3.95\" cy=\"6.70\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"6.50\" cy=\"6.70\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"9.05\" cy=\"6.70\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"11.60\" cy=\"6.70\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"1.40\" cy=\"9.30\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"3.95\" cy=\"9.30\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"6.50\" cy=\"9.30\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"9.05\" cy=\"9.30\" r=\"0.5\" fill=\"#fff\"/><circle cx=\"11.60\" cy=\"9.30\" r=\"0.5\" fill=\"#fff\"/></svg>", "ja": "<svg viewBox=\"0 0 30 20\" aria-hidden=\"true\"><rect width=\"30\" height=\"20\" fill=\"#fff\"/><circle cx=\"15\" cy=\"10\" r=\"6\" fill=\"#BC002D\"/></svg>", "zh": "<svg viewBox=\"0 0 30 20\" aria-hidden=\"true\"><rect width=\"30\" height=\"20\" fill=\"#DE2910\"/><polygon fill=\"#FFDE00\" points=\"5.00,2.00 5.67,4.07 7.85,4.07 6.09,5.35 6.76,7.43 5.00,6.15 3.24,7.43 3.91,5.35 2.15,4.07 4.33,4.07\"/><polygon fill=\"#FFDE00\" points=\"9.14,2.51 9.62,1.97 9.25,1.34 9.91,1.63 10.39,1.08 10.33,1.80 11.00,2.09 10.29,2.25 10.22,2.97 9.85,2.35\"/><polygon fill=\"#FFDE00\" points=\"11.01,4.14 11.66,3.82 11.56,3.10 12.07,3.62 12.72,3.30 12.38,3.95 12.88,4.47 12.17,4.34 11.83,4.99 11.73,4.27\"/><polygon fill=\"#FFDE00\" points=\"11.04,6.73 11.76,6.70 11.96,6.00 12.21,6.68 12.94,6.66 12.37,7.10 12.62,7.79 12.01,7.38 11.44,7.83 11.64,7.13\"/><polygon fill=\"#FFDE00\" points=\"9.22,8.38 9.90,8.63 10.35,8.06 10.32,8.79 11.00,9.05 10.30,9.24 10.26,9.96 9.87,9.36 9.16,9.55 9.62,8.98\"/></svg>"};
