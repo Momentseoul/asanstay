@@ -67,18 +67,23 @@
   .foot dl{margin:0;display:grid;grid-template-columns:auto auto;gap:4px 18px}
   .foot dd{margin:0;color:var(--ink);font-weight:600}
 
-  /* 휴대폰: 숙소를 하나씩 세로로 — 사진은 잘리지 않게 원본 비율(3:2) 그대로 */
+  /* 휴대폰: 첫 화면에 숙소 세 곳이 모두 보이게 — 사진(왼쪽, 3:2 원본 비율로 잘림 없이) + 이름·버튼(오른쪽) */
   @media (max-width:700px){
-    .stays{grid-template-columns:1fr;gap:30px}
-    .stay figure{aspect-ratio:3/2;border-radius:6px}
-    .stay .body{padding-top:12px}
-    .stay h2{font-size:21px;gap:8px}
-    .stay h2::before{width:8px;height:8px}
-    .stay .area{font-size:13px}
-    .stay .tag{font-size:15px;margin-top:6px}
-    .stay ul{font-size:13.5px;margin-top:8px;padding-top:8px;line-height:1.6}
-    .actions{flex-wrap:nowrap;gap:8px;padding-top:12px}
-    .btn{flex:1;min-height:44px;font-size:14px;padding:0 10px}
+    .top{padding-top:10px;padding-bottom:8px}
+    .intro{padding-top:4px;padding-bottom:14px}
+    .intro h1{font-size:30px}
+    .intro p{margin-top:8px;font-size:13.5px}
+    .stays{grid-template-columns:1fr;gap:12px}
+    .stay{flex-direction:row;align-items:center;gap:12px;padding-bottom:12px;border-bottom:1px solid var(--line)}
+    .stay:last-child{border-bottom:0}
+    .stay figure{flex:0 0 46%;aspect-ratio:3/2;border-radius:6px}
+    .stay .body{padding:0;flex:1;min-width:0}
+    .stay h2{font-size:17px;gap:6px}
+    .stay h2::before{width:7px;height:7px}
+    .stay .area{font-size:12px;margin-top:2px}
+    .stay .tag,.stay ul{display:none}
+    .actions{flex-direction:column;gap:6px;padding-top:8px}
+    .btn{width:100%;min-height:34px;font-size:13px;padding:0 8px}
   }
   /* 컴퓨터(넓은 화면): 화면 폭을 넓게 쓰고 글씨·버튼을 화면에 맞춰 크게 */
   @media (min-width:1000px){
